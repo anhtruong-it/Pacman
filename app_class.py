@@ -1,5 +1,5 @@
 import sys
-import pygame
+import pygame, pygame_menu
 from player import *
 from setting import *
 
@@ -19,6 +19,7 @@ class App :
     def run(self):
         while self.running :
             if self.state == 'intro':
+                #self.menu_pacman()
                 self.start_event()
                 self.start_update()
                 self.start_draw()
@@ -31,6 +32,19 @@ class App :
             self.clock.tick(FPS)
         pygame.quit()
         sys.exit()
+        
+###################MENU FUNCTION ############################        
+    #def menu_pacman(self):
+        #self.paths = pygame_menu.baseimage.IMAGE_EXAMPLE_PYGAME_MENU
+        #self.menu = pygame_menu.Menu("PACMAN:"+str(self.score)+"(Highest Scores)", 610, 670,theme=pygame_menu.themes.THEME_GREEN)
+        #self.menu.add.image(self.paths, angle=10, scale=(0.15, 0.15))
+        #self.menu.add.label(self.infor)
+        #self.menu.add.button('play')
+        #self.menu.add.button('Setting')
+        #self.menu.add.button('Quit')
+        #self.menu.mainloop(self.screen)
+        #pygame.display.update()    
+        
 ##################### HELP FUNCTION ################################33
     def draw_text(self, word,screen,pos, size, color, font_name, center = False):
         font = pygame.font.SysFont(font_name, size)
