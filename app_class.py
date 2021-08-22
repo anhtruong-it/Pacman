@@ -104,10 +104,6 @@ class App :
         self.draw_button("Quit", self.screen, [WIDTH- BUTTON_W -10, HEIGHT//2+150], BUTTON_W, BUTTON_H ,RED, "quit")
         self.draw_button("Confingure", self.screen, [WIDTH//2 - BUTTON_W//2, HEIGHT//2+150], BUTTON_W, BUTTON_H ,RED, "configure")
         
-
-
-
-
         # draw student name:
         student_height_pos = HEIGHT - 60
         for i in STUDENTS:
