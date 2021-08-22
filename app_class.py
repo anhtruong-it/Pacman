@@ -1,10 +1,13 @@
 import sys
 import pygame
+from pygame.mixer import Sound
 import pygame_menu
+import time
 from player import *
 from setting import *
 
 pygame.init()
+pygame.mixer.init()
 vec = pygame.math.Vector2
 class App :
     def __init__(self):
@@ -18,6 +21,8 @@ class App :
         self.player = Player(self,PLAYER_START_POSITION)
         self.button = {}
         self.menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)   
+        self.play_sound(INTRO_SOUND)
+        self.sound_time = time.time()
         self.load()
     def run(self):
         while self.running :
@@ -25,6 +30,10 @@ class App :
                 self.start_event()
                 self.start_update()
                 self.start_draw()
+                if time.time()- self.sound_time > INTRO_SOUND_LENGTH+2:
+                    self.play_sound(INTRO_SOUND)
+                    self.sound_time = time.time()
+
             elif self.state == 'playing':
                 self.playing_event()
                 self.playing_update()
@@ -75,8 +84,10 @@ class App :
             self.button[word] = (pos, w,h, state)
         # self.screen.fill(default_colour, rec)
 
+    def play_sound(self, soundname):
+        sound = pygame.mixer.Sound(soundname)
+        sound.play()
 ##################### START FUNCTION ################################33
-
     def start_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -85,6 +96,7 @@ class App :
                 for key in self.button:
                     if self.in_button(self.button[key]):
                         self.state = self.button[key][-1] #the state in the button tuple
+                        pygame.mixer.stop()
                         break
 
     def start_update(self):

@@ -39,3 +39,7 @@ BUTTON_H = 80
 
 BUTTON_WORD_SIZE = 30
 BUTTON_WORD_FONT = "Bauhaus 93"
+
+#sound setting
+INTRO_SOUND ="pacman_beginning.wav"
+INTRO_SOUND_LENGTH = 4 #4 seconds
