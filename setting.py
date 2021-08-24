@@ -21,7 +21,15 @@ START_FONT = 'Bauhaus 93'
 #image
 START_ICON = "pacmanLogo.png"
 #player setting
-PLAYER_START_POSITION = vec(1,1)
+PLAYER_START_POSITION = vec(14,30)
+PACMAN_OPEN = "PacmanOpen.png"
+PACMAN_CLOSE = "PacmanClose.png"
+PACMAN_SCALE= ((HEIGHT//ROWS) - 3, (WIDTH//COLS-3))
+
+
+
+
+
 
 # The year and course code
 COURSE_YEAR = "2021"

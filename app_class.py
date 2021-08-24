@@ -20,7 +20,7 @@ class App :
         self.cell_w = MAZE_WIDTH //ROWS
         self.player = Player(self,PLAYER_START_POSITION)
         self.button = {}
-        self.menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)   
+        # self.menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)   
         self.play_sound(INTRO_SOUND)
         self.sound_time = time.time()
         self.load()
@@ -131,14 +131,24 @@ class App :
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
-            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    self.player.move(vec(-1,0))
+                elif event.key == pygame.K_RIGHT:
+                    self.player.move(vec(1,0))
+                elif event.key == pygame.K_UP:
+                    self.player.move(vec(0,-1))
+                elif event.key == pygame.K_DOWN:
+                    self.player.move(vec(0,1))
 
     def playing_update(self):
-        pass
+        self.player.update()
+        self.player.change_state()
     def playing_draw(self):
         self.screen.fill(BLACK)
         self.screen.blit (self.background,(TOP_BOTTOM_BUFFER//2, TOP_BOTTOM_BUFFER//2))
         self.darw_grid()
         self.draw_text("CURRENT SCORE: {}".format(0),self.screen, [50, 5], 18, WHITE , START_FONT)
         self.draw_text("HIGH SCORE: {}".format(0),self.screen, [WIDTH//2, 5], 18, WHITE , START_FONT)
+        self.player.draw()
         pygame.display.update()
