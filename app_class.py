@@ -16,10 +16,11 @@ class App :
         self.running = True
         self.state = 'intro'
         self.score = 0
-        self.cell_h = MAZE_HEIGHT //COLS
-        self.cell_w = MAZE_WIDTH //ROWS
+        self.cell_h = MAZE_HEIGHT //ROWS
+        self.cell_w = MAZE_WIDTH //COLS
         self.player = Player(self,PLAYER_START_POSITION)
         self.button = {}
+        self.wall = []
         # self.menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)   
         self.play_sound(INTRO_SOUND)
         self.sound_time = time.time()
@@ -61,13 +62,21 @@ class App :
         self.icon = pygame.image.load(START_ICON)
         background = pygame.image.load('maze.png')
         self.background = pygame.transform.scale(background,(MAZE_WIDTH, MAZE_HEIGHT))
-
+        with open("wall.txt", 'r') as file:
+            for y,line in enumerate(file):
+                for x, char in enumerate(line):
+                    if char == "1":
+                        self.wall.append(vec(x,y))
+        print(self.wall)
     def darw_grid(self):
         for x in range(WIDTH//self.cell_w):
             pygame.draw.line(self.background, GREY , (x*self.cell_w, 0),(x*self.cell_w, HEIGHT))
         for y in range(HEIGHT//self.cell_h):
             pygame.draw.line(self.background, GREY , (0, y * self.cell_h),(WIDTH, y*self.cell_h))
 
+    def draw_wall(self):
+        for w in self.wall:
+            pygame.draw.circle(self.screen, BLUE, (w[0] *self.cell_w + TOP_BOTTOM_BUFFER//2, w[1] * self.cell_h +TOP_BOTTOM_BUFFER//2),2)
     def in_button (self, button_pos):
         mouse_pos = pygame.mouse.get_pos()
         pos, w,h = button_pos[:3]
@@ -148,6 +157,7 @@ class App :
         self.screen.fill(BLACK)
         self.screen.blit (self.background,(TOP_BOTTOM_BUFFER//2, TOP_BOTTOM_BUFFER//2))
         self.darw_grid()
+        # self.draw_wall()
         self.draw_text("CURRENT SCORE: {}".format(0),self.screen, [50, 5], 18, WHITE , START_FONT)
         self.draw_text("HIGH SCORE: {}".format(0),self.screen, [WIDTH//2, 5], 18, WHITE , START_FONT)
         self.player.draw()
