@@ -14,6 +14,10 @@ GREY = (110, 110, 104)
 WHITE = (255,255,255)
 YELLOW = (255,255,0)
 BLUE = (240,248,255)
+PINK = (255,188,217)
+CYAN = (0,255,255)
+ORANGE = (255,165,0)
+
 
 #font
 START_TEXT_SIZE = 26
@@ -52,3 +56,29 @@ BUTTON_WORD_FONT = "Bauhaus 93"
 #sound setting
 INTRO_SOUND ="pacman_beginning.wav"
 INTRO_SOUND_LENGTH = 4 #4 seconds
+
+#ghost character
+BLINKY = {
+    "colour": RED,
+    "Character": "Shadow",
+    "firstPic": "",
+    "secondPic" :""
+}
+PINKY = {
+    "colour": PINK,
+    "Character": "Speedy",
+    "firstPic": "",
+    "secondPic" :""
+}
+INKY = {
+    "colour": CYAN,
+    "Character": "Bashful",
+    "firstPic": "",
+    "secondPic" :""
+}
+CLYDE = {
+    "colour": ORANGE,
+    "Character": "Pokey",
+    "firstPic": "",
+    "secondPic" :""
+}
