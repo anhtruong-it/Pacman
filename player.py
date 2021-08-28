@@ -19,6 +19,7 @@ class Player():
         self.just_move = True
         self.close = True
         self.state_close = time.time()
+        self.speed = 2
         # self.stop = False
 
     def draw(self):
@@ -61,7 +62,7 @@ class Player():
     def update(self):
         # print (self.can_move(self.direction))
         if(self.just_move):
-            self.pix_pos += self.direction
+            self.pix_pos += self.direction * self.speed
         if(self.can_turn()):
             # last_just_move = self.just_move
             # print(self.grid_pos)
@@ -78,7 +79,7 @@ class Player():
             elif self.can_move(old_direction):
                 self.direction = old_direction
                 self.just_move = True
-            print(self.new_direction, old_direction)
+            # print(self.new_direction, old_direction)
             # else:
             #     self.just_move = last_just_move
             
