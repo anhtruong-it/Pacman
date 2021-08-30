@@ -31,8 +31,8 @@ PACMAN_OPEN = "PacmanOpen.png"
 PACMAN_CLOSE = "PacmanClose.png"
 PACMAN_SCALE= ((HEIGHT//ROWS) - 3, (WIDTH//COLS-3))
 
-
-
+#ghost setting
+GHOST_SCALE = ((HEIGHT//ROWS) - 3, (WIDTH//COLS-3))
 
 
 
@@ -59,26 +59,30 @@ INTRO_SOUND_LENGTH = 4 #4 seconds
 
 #ghost character
 BLINKY = {
+    "id" : 2,
     "colour": RED,
     "Character": "Shadow",
-    "firstPic": "",
-    "secondPic" :""
+    "firstPic": "BLINKY1.png",
+    "secondPic" :"BLINKY2.png"
 }
 PINKY = {
+    "id" : 3,
     "colour": PINK,
     "Character": "Speedy",
-    "firstPic": "",
-    "secondPic" :""
+    "firstPic": "PINKY1.png",
+    "secondPic" :"PINKY2.png"
 }
 INKY = {
+    "id" : 4,
     "colour": CYAN,
     "Character": "Bashful",
-    "firstPic": "",
-    "secondPic" :""
+    "firstPic": "INKY1.png",
+    "secondPic" :"INKY2.png"
 }
 CLYDE = {
+    "id" : 5,
     "colour": ORANGE,
     "Character": "Pokey",
-    "firstPic": "",
-    "secondPic" :""
+    "firstPic": "CLYDE1.png",
+    "secondPic" :"CLYDE2.png"
 }

@@ -5,7 +5,7 @@ import pygame_menu
 import time
 from player import *
 from setting import *
-
+from ghost import *
 pygame.init()
 pygame.mixer.init()
 vec = pygame.math.Vector2
@@ -21,6 +21,7 @@ class App :
         self.player = Player(self,PLAYER_START_POSITION)
         self.button = {}
         self.wall = []
+        self.ghost = []
         # self.menu = pygame_menu.Menu('Welcome', 400, 300, theme=pygame_menu.themes.THEME_DARK)   
         self.play_sound(INTRO_SOUND)
         self.sound_time = time.time()
@@ -67,7 +68,16 @@ class App :
                 for x, char in enumerate(line):
                     if char == "1":
                         self.wall.append(vec(x,y))
-        print(self.wall)
+                    elif char == "2":
+                        self.ghost.append( Ghost(self, vec(x,y) , BLINKY) )
+                    elif char == "3":
+                        self.ghost.append( Ghost(self, vec(x,y) , PINKY) )
+                    elif char == "4":
+                        self.ghost.append( Ghost(self, vec(x,y) , INKY) )
+                    elif char == "5":
+                        self.ghost.append( Ghost(self, vec(x,y) , CLYDE) )
+                        
+        # print(self.wall)
     def darw_grid(self):
         for x in range(WIDTH//self.cell_w):
             pygame.draw.line(self.background, GREY , (x*self.cell_w, 0),(x*self.cell_w, HEIGHT))
@@ -153,6 +163,9 @@ class App :
     def playing_update(self):
         self.player.update()
         self.player.change_state()
+        for g in self.ghost:
+            g.update()
+            g.change_state()
     def playing_draw(self):
         self.screen.fill(BLACK)
         self.screen.blit (self.background,(TOP_BOTTOM_BUFFER//2, TOP_BOTTOM_BUFFER//2))
@@ -161,4 +174,6 @@ class App :
         self.draw_text("CURRENT SCORE: {}".format(0),self.screen, [50, 5], 18, WHITE , START_FONT)
         self.draw_text("HIGH SCORE: {}".format(0),self.screen, [WIDTH//2, 5], 18, WHITE , START_FONT)
         self.player.draw()
+        for g in self.ghost:
+            g.draw()
         pygame.display.update()
