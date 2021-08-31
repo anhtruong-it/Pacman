@@ -31,7 +31,7 @@ class Ghost:
         return 1
 
     def change_state(self):
-        if time.time() - self.time_change >= 0.1 :
+        if time.time() - self.time_change >= 0.2 :
             self.change_pic = not self.change_pic
             self.time_change = time.time()
         

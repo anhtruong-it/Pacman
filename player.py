@@ -31,8 +31,8 @@ class Player():
             self.app.screen.blit(self.Popen, pacman)
             pygame.draw.circle(self.app.screen, RED, pacman,2)
 
-        pygame.draw.rect(self.app.screen, RED, (self.grid_pos[0]*self.app.cell_w+TOP_BOTTOM_BUFFER//2,
-                    self.grid_pos[1]*self.app.cell_h+TOP_BOTTOM_BUFFER//2, self.app.cell_w, self.app.cell_h), 1)
+        # pygame.draw.rect(self.app.screen, RED, (self.grid_pos[0]*self.app.cell_w+TOP_BOTTOM_BUFFER//2,
+        #             self.grid_pos[1]*self.app.cell_h+TOP_BOTTOM_BUFFER//2, self.app.cell_w, self.app.cell_h), 1)
 
     def get_pix_pos(self):
         return vec((self.grid_pos[0]*self.app.cell_w + 0.5*self.app.cell_w)+TOP_BOTTOM_BUFFER//2,
