@@ -61,7 +61,7 @@ INTRO_SOUND_LENGTH = 4 #4 seconds
 BLINKY = {
     "id" : 2,
     "colour": RED,
-    "Character": "Shadow",
+    "Character": "Scared",
     "firstPic": "BLINKY1.png",
     "secondPic" :"BLINKY2.png"
 }
@@ -75,14 +75,14 @@ PINKY = {
 INKY = {
     "id" : 4,
     "colour": CYAN,
-    "Character": "Bashful",
+    "Character": "Random",
     "firstPic": "INKY1.png",
     "secondPic" :"INKY2.png"
 }
 CLYDE = {
     "id" : 5,
     "colour": ORANGE,
-    "Character": "Pokey",
+    "Character": "Slow",
     "firstPic": "CLYDE1.png",
     "secondPic" :"CLYDE2.png"
 }
